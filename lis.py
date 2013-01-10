@@ -8,12 +8,15 @@ def generate_random_sequence(length=50):
 def lis(sequence):
     list_of_sequences = [[sequence[0]]]
     for item in sequence:
+        # case 1: item is larger than all sequence ends
         if item > list_of_sequences[-1][-1]:
             new_s = list(list_of_sequences[-1])
             new_s.append(item)
             list_of_sequences.append(new_s)
+        # case 2: item is smaller than all sequence ends
         elif item < list_of_sequences[0][0]:
             list_of_sequences[0][0] = item
+        # case 3: item is somewhere in the middle
         else:
             list_of_sequences = clone_extend_remove(item, list_of_sequences)
 

@@ -11,15 +11,20 @@ def generate_random_sequence(length=50):
 def lis2(sequence):
     lengths = []
     for i, s in enumerate(sequence):
+        # If it's the first item, the max length can only be 1
         if i == 0:
             lengths.append(1)
         else:
             possibles = []
             for j, length in enumerate(lengths):
+                # if the item is bigger than the end of the other subsequences
                 if s > sequence[j]:
+                    # add one
                     possibles.append(length + 1)
                 else:
+                    # otherwise it's smaller and can't be added
                     possibles.append(1)
+            # add the longest out of all possibilities
             lengths.append(max(possibles))
     return max(lengths)
 

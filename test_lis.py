@@ -1,6 +1,6 @@
 import unittest
 
-from lis import lis
+from lis import lis, lis2
 
 class LISTestCase(unittest.TestCase):
     def setUp(self):
@@ -15,7 +15,11 @@ class LISTestCase(unittest.TestCase):
 
     def test_lis(self):
         for l, longest_s in zip(self.lists, self.list_lis):
-            self.assertEquals(longest_s, lis(l))
+            self.assertEqual(longest_s, lis(l))
+
+    def test_lis2(self):
+        for l, longest_s in zip(self.lists, self.list_lis):
+            self.assertEqual(len(longest_s), lis2(l))
 
 
 if __name__ == '__main__':

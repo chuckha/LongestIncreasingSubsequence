@@ -5,6 +5,26 @@ def generate_random_sequence(length=50):
     random.shuffle(x)
     return x
 
+
+[2, 6, 1, 8, 5, 4, 0, 3, 9, 7]
+
+def lis2(sequence):
+    lengths = []
+    for i, s in enumerate(sequence):
+        if i == 0:
+            lengths.append(1)
+        else:
+            possibles = []
+            for j, length in enumerate(lengths):
+                if s > sequence[j]:
+                    possibles.append(length + 1)
+                else:
+                    possibles.append(1)
+            lengths.append(max(possibles))
+    return max(lengths)
+
+
+
 def lis(sequence):
     list_of_sequences = [[sequence[0]]]
     for item in sequence:
